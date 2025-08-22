@@ -18,3 +18,11 @@ self.addEventListener("fetch", event => {
     })
   );
 });
+
+git init
+git add .
+git commit -m "Première version de ma PWA"
+
+git remote add origin https://github.com/max-emc/pwa.git
+git branch -M main
+git push -u origin main
