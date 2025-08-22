@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma PWA</title>
+  
+  <!-- Lien vers le manifest -->
+  <link rel="manifest" href="manifest.json">
+  
+  <!-- Couleur de la barre d’adresse -->
+  <meta name="theme-color" content="#2196f3">
+</head>
+<body>
+  <h1>Hello, c’est ma PWA 🚀</h1>
+  <p>Elle peut être installée sur mobile !</p>
+
+  <script>
+    // Enregistrement du service worker
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
