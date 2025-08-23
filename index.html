@@ -2,24 +2,22 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ma PWA</title>
-  
-  <!-- Lien vers le manifest -->
-  <link rel="manifest" href="manifest.json">
-  
-  <!-- Couleur de la barre d’adresse -->
-  <meta name="theme-color" content="#2196f3">
+  <title>Test Python <-> JS</title>
 </head>
 <body>
-  <h1>Hello, World</h1>
-  <p>Test mise à jour</p>
+  <h1>Test Python → JavaScript</h1>
+  <button id="btn">Obtenir le message</button>
+  <p id="result"></p>
 
   <script>
-    // Enregistrement du service worker
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
-    }
+    document.getElementById("btn").addEventListener("click", () => {
+      fetch("http://127.0.0.1:5000/api/message")
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("result").textContent = data.text;
+        })
+        .catch(err => console.error("Erreur:", err));
+    });
   </script>
 </body>
 </html>
