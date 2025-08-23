@@ -1,23 +1,50 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Test Node.js <-> JS</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://kit.fontawesome.com/57736e79f1.js" crossorigin="anonymous"></script>
+  <title>Pas de cookies !</title>
 </head>
 <body>
-  <h1>Test Node.js → JavaScript</h1>
-  <button id="btn">Obtenir le message</button>
-  <p id="result"></p>
+  <div class="informations">
+    <input type="text" name="search" placeholder="Entrez une url pour commencer" id="searchBar">
+    <button id="searchButton">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <script src="script.js"></script>
+  </div>
 
-  <script>
-    document.getElementById("btn").addEventListener("click", () => {
-      fetch("/api/message")
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById("result").textContent = data.text;
-        })
-        .catch(err => console.error("Erreur:", err));
-    });
-  </script>
+  <div id="container"></div>
+
+  <h1>{{ title }}</h1>
+  <p>{{ summary }}</p>
+
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
+  <p>  </p><br>
 </body>
 </html>
