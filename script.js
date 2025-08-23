@@ -12,6 +12,7 @@ searchButton.addEventListener("click", async () => {
 	}
 
 	try {
+		console.log("extraction...")
 		const res = await fetch("/api/scraper", {
 			method: "POST",
 			headers: {"Content-Type": "application/json"},
@@ -19,10 +20,9 @@ searchButton.addEventListener("click", async () => {
 		});
 
 		const data = await res.json();
-		// container.content = data.
-		console.log(data);
+		const cleaned = DOMPurify.sanitize(data.content);
+		container.innerHTML = cleaned;
 	} catch (err) {
 		console.error("Erreur lors de la requête :", err);
 	}
-
 })

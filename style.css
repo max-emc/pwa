@@ -54,7 +54,7 @@ h1, h2 {
   }
 
   button {
-    width: 5%;
+    width: 40px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     background-color: #DDDDDD;
