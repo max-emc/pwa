@@ -19,8 +19,13 @@ searchButton.addEventListener("click", async () => {
 			body: JSON.stringify({url: debugUrl})
 		});
 
+		if (!res.ok) {
 		const data = await res.json();
 		const cleaned = DOMPurify.sanitize(data.content);
+		} else {
+			const data = await res.json();
+			console.log("Réponse :", data);
+		}
 		container.innerHTML = cleaned;
 	} catch (err) {
 		console.error("Erreur lors de la requête :", err);
