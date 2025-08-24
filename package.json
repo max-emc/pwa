@@ -15,5 +15,8 @@
     "puppeteer": "^24.17.0",
     "puppeteer-core": "^24.17.0"
   },
-  "description": ""
+  "description": "",
+  "scripts": {
+    "postinstall": "playwright install chromium"
+  }
 }
