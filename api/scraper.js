@@ -87,21 +87,27 @@
 
 // npm install playwright-core @sparticuz/chromium
 
-// api/scraper.js
-import { chromium } from 'playwright';
+import chromium from '@sparticuz/chromium';
+import { chromium as playwrightChromium } from 'playwright-core';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
-  const url = "https://example.com/";
+  const url = "https://example.com/"
   if (!url) return res.status(400).json({ error: 'No URL provided' });
 
   let browser;
   try {
-    browser = await chromium.launch({ headless: true });
+    browser = await playwrightChromium.launch({
+      executablePath: await chromium.executablePath(),
+      args: chromium.args,
+      headless: true,
+    });
+
     const page = await browser.newPage();
     await page.goto(url, { waitUntil: 'networkidle' });
     const content = await page.content();
+
     res.status(200).json({ content });
   } catch (err) {
     console.error(err);
