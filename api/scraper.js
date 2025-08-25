@@ -87,20 +87,34 @@
 
 // npm install playwright-core @sparticuz/chromium
 
-import chromium from '@sparticuz/chromium';
 import { chromium as playwrightChromium } from 'playwright-core';
+import chromiumLambda from '@sparticuz/chromium';
+import path from 'path';
+import os from 'os';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
-  const url = "https://example.com/"
-  if (!url) return res.status(400).json({ error: 'No URL provided' });
+  const url = "https://example.com/";
 
   let browser;
   try {
+    let executablePath;
+    let args;
+
+    if (os.platform() === 'win32') {
+      // Sur Windows : utilise ton Chrome/Chromium installé
+      executablePath = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'; // adapte si nécessaire
+      args = [];
+    } else {
+      // Sur Linux / Vercel : utilise le Chromium serverless
+      executablePath = await chromiumLambda.executablePath();
+      args = chromiumLambda.args;
+    }
+
     browser = await playwrightChromium.launch({
-      executablePath: await chromium.executablePath(),
-      args: chromium.args,
+      executablePath,
+      args,
       headless: true,
     });
 
@@ -116,3 +130,4 @@ export default async function handler(req, res) {
     if (browser) await browser.close();
   }
 }
+
