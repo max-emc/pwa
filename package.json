@@ -1,22 +1,16 @@
 {
   "name": "pwa",
   "version": "1.0.0",
-  "main": "service-worker.js",
+  "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^5.1.0",
-    "nodemon": "^3.1.10",
-    "playwright": "^1.55.0",
-    "puppeteer": "^24.17.0",
-    "puppeteer-core": "^24.17.0"
-  },
   "description": "",
-  "scripts": {
-    "postinstall": "playwright install chromium"
+  "dependencies": {
+    "playwright": "^1.55.0",
+    "playwright-aws-lambda": "^0.11.0"
   }
 }
