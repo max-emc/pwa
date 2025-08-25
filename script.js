@@ -26,7 +26,7 @@ searchButton.addEventListener("click", async () => {
 		} else {
 			const data = await res.json();
 			console.log("Réponse :", data);
-			container.innerHTML = data.content;
+			container.innerHTML = data.content.content;
 		}
 	} catch (err) {
 		console.error("Erreur lors de la requête :", err);
